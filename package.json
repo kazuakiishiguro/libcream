@@ -1,0 +1,26 @@
+{
+  "name": "libcream",
+  "version": "0.0.1",
+  "description": "A CREAM client library",
+  "main": "build/index.js",
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazuakiishiguro/libcream.git"
+  },
+  "author": "Kazuaki Ishiguro",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/kazuakiishiguro/libcream/issues"
+  },
+  "homepage": "https://github.com/kazuakiishiguro/libcream#readme",
+  "devDependencies": {
+    "typescript": "^3.9.6"
+  },
+  "dependencies": {
+    "circomlib": "0.0.20"
+  }
+}
