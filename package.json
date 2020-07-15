@@ -5,7 +5,8 @@
   "main": "build/index.js",
   "scripts": {
     "watch": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,13 @@
   },
   "homepage": "https://github.com/kazuakiishiguro/libcream#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.2",
     "typescript": "^3.9.6"
   },
   "dependencies": {
-    "circomlib": "0.0.20"
+    "circomlib": "0.0.20",
+    "snarkjs": "0.1.20"
   }
 }
