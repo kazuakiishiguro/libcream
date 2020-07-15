@@ -19,6 +19,19 @@ interface Deposit {
 
 const bigInt = snarkjs.bigInt
 
+const hashOne = (
+    preImage: SnarkBigInt
+): SnarkBigInt => {
+    return mimcsponge.multiHash([preImage], 0, 1)
+}
+
+const hashLeftRight = (
+    left: SnarkBigInt,
+    right: SnarkBigInt
+): SnarkBigInt => {
+    return mimcsponge.multiHash([left, right], 0, 1)
+}
+
 const pedersenHash = (
     value: SnarkBigInt
 ): PedersenHash => {
@@ -50,14 +63,15 @@ const createDeposit = (
         secret,
         preimage,
         commitment: commitment.babyJubX,
-        nullifierHash: nullifierHash.babyJubY
+        nullifierHash: nullifierHash.babyJubX
     }
 }
 
 export {
-    //    MerkleTree,
     SnarkBigInt,
     bigInt,
+    hashOne,
+    hashLeftRight,
     pedersenHash,
     rbigInt,
     createDeposit,
