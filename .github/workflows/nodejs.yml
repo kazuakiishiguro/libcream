@@ -1,0 +1,29 @@
+name: libcream test
+
+on:
+	push:
+		branched:
+			- master
+			- develop
+
+jobs:
+  build:
+	runs-on: ubuntu-latest
+
+	strategy:
+		matrix:
+			node-version: [10.x, 11.x, 12.x]
+
+	steps:
+	- uses: actions/checkout@v1
+	- name: Setup node-version
+	  uses: actions/setup-node@v1
+	  with:
+		node-version: ${{ matrix.node-version }}
+	- name: NPM install and prepare
+	  run: |
+	       npm install
+	       npm run build
+	- name: Test
+	  run: |
+	       npm test
