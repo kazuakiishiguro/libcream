@@ -1,6 +1,6 @@
 import * as snarkjs from 'snarkjs'
 import * as crypto from 'crypto'
-import { babyJub, mimcsponge, pedersenHash as circomPedersenHash } from 'circomlib'
+import { babyJub, pedersenHash as circomPedersenHash } from 'circomlib'
 
 type SnarkBigInt = snarkjs.bigInt
 
@@ -18,19 +18,6 @@ interface Deposit {
 }
 
 const bigInt = snarkjs.bigInt
-
-const hashOne = (
-    preImage: SnarkBigInt
-): SnarkBigInt => {
-    return mimcsponge.multiHash([preImage], 0, 1)
-}
-
-const hashLeftRight = (
-    left: SnarkBigInt,
-    right: SnarkBigInt
-): SnarkBigInt => {
-    return mimcsponge.multiHash([left, right], 0, 1)
-}
 
 const pedersenHash = (
     value: SnarkBigInt
@@ -70,8 +57,6 @@ const createDeposit = (
 export {
     SnarkBigInt,
     bigInt,
-    hashOne,
-    hashLeftRight,
     pedersenHash,
     rbigInt,
     createDeposit,
