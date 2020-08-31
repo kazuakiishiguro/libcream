@@ -1,8 +1,9 @@
 import {
     createDeposit,
+    generateDeposit,
     pedersenHash,
     rbigInt,
-    bigInt,
+    toHex
 } from '../'
 
 describe('creamlib utilities', () => {
@@ -16,6 +17,17 @@ describe('creamlib utilities', () => {
 
             expect(deposit.commitment.toString()).toEqual(pedersenHash(preimage).babyJubX.toString())
             expect(deposit.nullifierHash.toString()).toEqual(pedersenHash(nullifier_buf).babyJubX.toString())
+        })
+
+        it('should generate `Deposit` object from deposit note correctly', () => {
+            const nullifier = rbigInt(31)
+            const secret = rbigInt(31)
+            const deposit = createDeposit(nullifier, secret)
+
+            const note = toHex(deposit.preimage, 62)
+            const generatedDeposit = generateDeposit(note)
+
+            expect(deposit.commitment.toString()).toEqual(generatedDeposit.commitment.toString())
         })
     })
 })

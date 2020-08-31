@@ -19,6 +19,14 @@ interface Deposit {
 
 const bigInt = snarkjs.bigInt
 
+const toHex = (
+    n: SnarkBigInt,
+    length = 31
+): string => {
+    const str = n instanceof Buffer ? n.toString('hex') : bigInt(n).toString(16)
+    return '0x' + str.padStart(length * 2, '0')
+}
+
 const pedersenHash = (
     value: SnarkBigInt
 ): PedersenHash => {
@@ -54,10 +62,22 @@ const createDeposit = (
     }
 }
 
+const generateDeposit = (
+    note: string
+): Deposit => {
+    const buf: Buffer = Buffer.from(note.slice(2), 'hex')
+    return createDeposit(
+        bigInt.leBuff2int(buf.slice(0, 31)),
+        bigInt.leBuff2int(buf.slice(31, 62))
+    )
+}
+
 export {
     SnarkBigInt,
     bigInt,
+    toHex,
     pedersenHash,
     rbigInt,
     createDeposit,
+    generateDeposit
 }
