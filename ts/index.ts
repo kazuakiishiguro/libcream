@@ -21,7 +21,7 @@ const bigInt = snarkjs.bigInt
 
 const toHex = (
     n: SnarkBigInt,
-    length = 31
+    length = 32
 ): string => {
     const str = n instanceof Buffer ? n.toString('hex') : bigInt(n).toString(16)
     return '0x' + str.padStart(length * 2, '0')
