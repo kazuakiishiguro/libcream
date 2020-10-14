@@ -1,8 +1,6 @@
-import * as snarkjs from 'snarkjs'
 import * as crypto from 'crypto'
+import { SnarkBigInt, bigInt } from 'cream-merkle-tree'
 import { babyJub, pedersenHash as circomPedersenHash } from 'circomlib'
-
-type SnarkBigInt = snarkjs.bigInt
 
 interface PedersenHash {
     babyJubX: SnarkBigInt,
@@ -16,8 +14,6 @@ interface Deposit {
     commitment: SnarkBigInt,
     nullifierHash: SnarkBigInt
 }
-
-const bigInt = snarkjs.bigInt
 
 const toHex = (
     n: SnarkBigInt,
