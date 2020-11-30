@@ -20,13 +20,11 @@
   "bugs": {
     "url": "https://github.com/kazuakiishiguro/libcream/issues"
   },
-  {
-    "husky": {
-      "hooks": {
-	"pre-commit": "npm run format"
-      }
-    }
-  },
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run format"
+		}
+	},
   "homepage": "https://github.com/kazuakiishiguro/libcream#readme",
   "devDependencies": {
     "@types/jest": "^26.0.4",
