@@ -1,6 +1,7 @@
 import * as crypto from 'crypto'
 import { SnarkBigInt, bigInt } from 'cream-merkle-tree'
 import { babyJub, pedersenHash as circomPedersenHash } from 'circomlib'
+import { createMessage, bnSqrt } from './maci'
 
 interface PedersenHash {
     babyJubX: SnarkBigInt,
@@ -75,5 +76,7 @@ export {
     pedersenHash,
     rbigInt,
     createDeposit,
-    generateDeposit
+    generateDeposit,
+    createMessage,
+    bnSqrt
 }

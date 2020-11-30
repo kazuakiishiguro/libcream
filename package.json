@@ -7,6 +7,7 @@
     "watch": "tsc --watch",
     "build": "tsc",
     "test": "npx jest",
+    "test:maci": "npx jest maci.test.ts",
     "prepare": "npm run build"
   },
   "repository": {
@@ -29,6 +30,9 @@
   },
   "dependencies": {
     "circomlib": "^0.2.4",
-    "cream-merkle-tree": "0.0.5"
+    "cream-merkle-tree": "0.0.5",
+    "ethers": "^5.0.23",
+    "maci-crypto": "^0.4.11",
+    "maci-domainobjs": "^0.4.11"
   }
 }
