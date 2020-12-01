@@ -1,6 +1,6 @@
 {
   "name": "libcream",
-  "version": "0.0.6",
+  "version": "0.1.0-0",
   "description": "A CREAM client library",
   "main": "build/index.js",
   "scripts": {
@@ -20,11 +20,11 @@
   "bugs": {
     "url": "https://github.com/kazuakiishiguro/libcream/issues"
   },
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run format"
-		}
-	},
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
+  },
   "homepage": "https://github.com/kazuakiishiguro/libcream#readme",
   "devDependencies": {
     "@types/jest": "^26.0.4",
