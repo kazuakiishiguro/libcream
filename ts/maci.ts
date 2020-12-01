@@ -4,7 +4,7 @@ import { Keypair, PubKey, Command, Message } from 'maci-domainobjs'
 
 // Ported from clr.fund utils
 // https://github.com/clrfund/monorepo/blob/fa2154cc54/contracts/utils/maci.ts
-function createMessage(
+const createMessage = (
 	userStateIndex: number,
 	userKeypair: Keypair,
 	newUserKeypair: Keypair | null,
@@ -13,7 +13,7 @@ function createMessage(
 	voiceCredits: BigNumber | null,
 	nonce: number,
 	_salt?: BigInt
-): [Message, PubKey] {
+): [Message, PubKey] => {
 	const encKeypair = new Keypair()
 	const salt = _salt ? _salt : genRandomSalt()
 	const quadraticVoteWeight = voiceCredits ? bnSqrt(voiceCredits) : 0
@@ -33,7 +33,7 @@ function createMessage(
 	return [message, encKeypair.pubKey]
 }
 
-function bnSqrt(a: BigNumber): BigNumber {
+const bnSqrt = (a: BigNumber): BigNumber => {
 	// Take square root from a big number
 	// https://stackoverflow.com/a/52468569/1868395
 	if (a.isZero()) {
