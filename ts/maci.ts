@@ -1,4 +1,4 @@
-import { BigNumber } from 'ethers'
+import { BigNumber } from '@ethersproject/bignumber'
 import { genRandomSalt } from 'maci-crypto'
 import { Keypair, PubKey, Command, Message } from 'maci-domainobjs'
 
@@ -10,13 +10,15 @@ const createMessage = (
 	newUserKeypair: Keypair | null,
 	coordinatorPubKey: PubKey,
 	voteOptionIndex: number | null, // index of recipinets[]
-	voiceCredits: BigNumber | null,
+	voiceCredits: number | null,
 	nonce: number,
 	_salt?: BigInt
 ): [Message, PubKey] => {
 	const encKeypair = new Keypair()
 	const salt = _salt ? _salt : genRandomSalt()
-	const quadraticVoteWeight = voiceCredits ? bnSqrt(voiceCredits) : 0
+	const quadraticVoteWeight = voiceCredits
+		? bnSqrt(BigNumber.from(voiceCredits))
+		: 0
 	const command = new Command(
 		BigInt(userStateIndex),
 		newUserKeypair ? newUserKeypair.pubKey : userKeypair.pubKey,

@@ -1,4 +1,4 @@
-import { BigNumber } from 'ethers'
+import { BigNumber } from '@ethersproject/bignumber'
 import { Keypair } from 'maci-domainobjs'
 import { createMessage, bnSqrt } from '../maci'
 
