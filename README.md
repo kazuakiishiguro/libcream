@@ -34,6 +34,14 @@ tree.insert(commitment)
 All you need is to pass `deposit: Deposit`, target `contract: ethers.Contract` and `p: MerkleTreeParams`
 
 ```javascript
+const deposit = generateDeposit(rbigInt(31), rbigInt(31))
+
+const params = {
+	depth: 4,
+	zeroValue: "2558267815324835836571784235309882327407732303445109280607932348234378166811"
+}
+
+const { root, merkleProof } = await generateMerkleProof(deposit, contract, params)
 ```
 
 ### Create message for casting your vote
