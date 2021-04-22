@@ -1,5 +1,6 @@
 import * as crypto from 'crypto'
-import { SnarkBigInt, bigInt } from 'cream-merkle-tree'
+import * as ethers from 'ethers'
+import { SnarkBigInt, bigInt, MerkleTree } from 'cream-merkle-tree'
 import { babyJub, pedersenHash as circomPedersenHash } from 'circomlib'
 import { createMessage, bnSqrt } from './maci'
 
@@ -14,6 +15,16 @@ interface Deposit {
 	preimage: SnarkBigInt
 	commitment: SnarkBigInt
 	nullifierHash: SnarkBigInt
+}
+
+interface MerkleTreeParams {
+	depth: number
+	zero_value: SnarkBigInt
+}
+
+interface MerkleProof {
+	root: SnarkBigInt
+	merkleProof: [SnarkBigInt[], number[]]
 }
 
 const toHex = (n: SnarkBigInt, length = 32): string => {
@@ -63,6 +74,44 @@ const generateDeposit = (note: string): Deposit => {
 	)
 }
 
+const generateMerkleProof = async (
+	deposit: Deposit,
+	contract: ethers.Contract,
+	p: MerkleTreeParams
+): Promise<MerkleProof> => {
+	const tree = new MerkleTree(p.depth, p.zero_value)
+
+	// Use API server or contract interaction
+	const events = await contract.queryFilter('Depoist')
+
+	const depositEvent = events.find(
+		(e) => e.args.commitment === toHex(deposit.commitment)
+	)
+
+	const leafIndex = depositEvent ? depositEvent.args.leafIndex : -1
+	if (leafIndex < 0) {
+		process.exit(1)
+	}
+
+	const leaves = events
+		.sort((a, b) => a.args.leafIndex - b.args.leafIndex)
+		.map((e) => e.args.commitment)
+
+	if (leaves) {
+		for (let i = 0; i < leaves.length; i++) {
+			tree.insert(leaves[i])
+		}
+	}
+
+	const root = tree.root
+	const merkleProof = tree.getPathUpdate(leafIndex)
+
+	return {
+		root,
+		merkleProof,
+	}
+}
+
 export {
 	SnarkBigInt,
 	bigInt,
@@ -73,4 +122,5 @@ export {
 	generateDeposit,
 	createMessage,
 	bnSqrt,
+	generateMerkleProof,
 }

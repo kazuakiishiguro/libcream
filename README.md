@@ -30,6 +30,11 @@ const { commitment, nullifierHash, nullifier, secret } = deposit
 tree.insert(commitment)
 ```
 
+### Generate MerkleTree when sign up MACI
+All you need is to pass `deposit: Deposit`, target `contract: ethers.Contract` and `p: MerkleTreeParams`
+
+```javascript
+```
 
 ### Create message for casting your vote
 In order to use in partnership with MACI, you need to cast a message. Here is a simple use case
@@ -42,7 +47,7 @@ const userKeypair = new Keypair()
 const coordinatorPubKey = new Keypair().pubKey
 const recipientIndex = 1
 const nonce = 1
-	
+
 const [message, encKeyPair] = createMessage(
     userStateIndex,
     userKeypair,
