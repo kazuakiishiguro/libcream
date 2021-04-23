@@ -83,7 +83,7 @@ const generateMerkleProof = async (
 ): Promise<MerkleProof> => {
 	const tree = new MerkleTree(p.depth, p.zero_value)
 
-	const r = await axios.get(host + '/factory/logs/' + address)
+	const r = await axios.get(host + '/zkcream/deposit/logs/' + address)
 	const events = r.data
 
 	const depositEvent = events.find((e) => e[0] === toHex(deposit.commitment))
