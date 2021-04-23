@@ -1,5 +1,5 @@
 import * as crypto from 'crypto'
-import * as ethers from 'ethers'
+import axios from 'axios'
 import { SnarkBigInt, bigInt, MerkleTree } from 'cream-merkle-tree'
 import { babyJub, pedersenHash as circomPedersenHash } from 'circomlib'
 import { createMessage, bnSqrt } from './maci'
@@ -74,28 +74,26 @@ const generateDeposit = (note: string): Deposit => {
 	)
 }
 
+// eventArray[] = [commitment, leafIndex, timastamp]
 const generateMerkleProof = async (
 	deposit: Deposit,
-	contract: ethers.Contract,
-	p: MerkleTreeParams
+	address: string,
+	p: MerkleTreeParams,
+	host: string = 'http://localhost:3000'
 ): Promise<MerkleProof> => {
 	const tree = new MerkleTree(p.depth, p.zero_value)
 
-	// Use API server or contract interaction
-	const events = await contract.queryFilter('Depoist')
+	const r = await axios.get(host + '/factory/logs/' + address)
+	const events = r.data
 
-	const depositEvent = events.find(
-		(e) => e.args.commitment === toHex(deposit.commitment)
-	)
+	const depositEvent = events.find((e) => e[0] === toHex(deposit.commitment))
 
-	const leafIndex = depositEvent ? depositEvent.args.leafIndex : -1
+	const leafIndex = depositEvent ? depositEvent[1] : -1
 	if (leafIndex < 0) {
 		process.exit(1)
 	}
 
-	const leaves = events
-		.sort((a, b) => a.args.leafIndex - b.args.leafIndex)
-		.map((e) => e.args.commitment)
+	const leaves = events.sort((a, b) => a[1] - b[1]).map((e) => e[0])
 
 	if (leaves) {
 		for (let i = 0; i < leaves.length; i++) {
