@@ -4,6 +4,21 @@
 
 This repository contains an essential libraries for [C.R.E.A.M](https://github.com/couger-inc/cream)'s client application.
 
+## Install
+
+```bash
+$ yarn add libcream
+# or
+$ npm install libcream
+```
+
+## Test
+```bash
+$ yarn test
+#or
+$ npm run test
+```
+
 ## Usability
 
 ### Deposit

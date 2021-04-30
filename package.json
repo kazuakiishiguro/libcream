@@ -42,7 +42,7 @@
     "@ethersproject/bignumber": "^5.0.14",
     "axios": "^0.21.1",
     "circomlib": "^0.2.4",
-    "cream-merkle-tree": "^0.0.7",
+    "cream-merkle-tree": "^0.0.8",
     "lint-staged": "^10.5.4",
     "maci-crypto": "^0.4.11",
     "maci-domainobjs": "^0.4.11",
