@@ -470,6 +470,11 @@
     "@ethersproject/properties" "^5.1.0"
     "@ethersproject/strings" "^5.1.0"
 
+"@iden3/bigarray@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@iden3/bigarray/-/bigarray-0.0.2.tgz#6fc4ba5be18daf8a26ee393f2fb62b80d98c05e9"
+  integrity sha512-Xzdyxqm1bOFF6pdIsiHLLl3HkSLjbhqJHVyqaTxXt3RqXBEnmsUmEW47H7VOi/ak7TdkRpNkxjyK5Zbkm+y52g==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1545,6 +1550,22 @@ circom@0.5.21:
     tmp-promise "^2.0.2"
     wasmbuilder "0.0.10"
 
+circom@0.5.33:
+  version "0.5.33"
+  resolved "https://registry.yarnpkg.com/circom/-/circom-0.5.33.tgz#6943d5799adf5388989bfbb3ef8f502fb1b4f662"
+  integrity sha512-UdL8fr6GckhQ4VoWjIvuYwCHneJe8z/AyJpDxgKLyuaX51ijd4gBP6jlwHDbQJsha2aU2GR9qgDsxd0jfari1Q==
+  dependencies:
+    chai "^4.2.0"
+    circom_runtime "0.1.8"
+    fastfile "0.0.18"
+    ffiasm "0.1.1"
+    ffjavascript "0.2.22"
+    ffwasm "0.0.7"
+    fnv-plus "^1.3.1"
+    r1csfile "0.0.16"
+    tmp-promise "^2.0.2"
+    wasmbuilder "0.0.10"
+
 circom_runtime@0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/circom_runtime/-/circom_runtime-0.1.4.tgz#eb8802f8743224ee603f70894b6f107d225463e4"
@@ -1553,19 +1574,28 @@ circom_runtime@0.1.4:
     ffjavascript "0.2.10"
     fnv-plus "^1.3.1"
 
-circomlib@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/circomlib/-/circomlib-0.2.4.tgz#5c487e69738c90bd73527d8830d2b2413d6f68ff"
-  integrity sha512-5x1/kn+7MJaakdGdKRCDMSCVsioyhFgWYCf2dbbd9xMmnZkMFjJpKzsE0UxncprFjyU2A8sVB1eb5Gj0pMaQBg==
+circom_runtime@0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/circom_runtime/-/circom_runtime-0.1.8.tgz#d967a1618fe5290849f9c0bbffb6b97b95c0f1c8"
+  integrity sha512-5ZmzCyidkNPb1zZsJGRXTuWcJ6kW6+gRBtHgf2tFqTh5dUyWVVPH0Zg7AsU2ijPr1AmYZUlme0yORUZK5HrjOA==
+  dependencies:
+    ffjavascript "0.2.10"
+    fnv-plus "^1.3.1"
+
+circomlib@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/circomlib/-/circomlib-0.5.2.tgz#5bfd47466cffcb215d707f36c8b8f76de7c703e0"
+  integrity sha512-xH1XLTQp6i1ifK13ZG4BbtjpaNkrfK8iK5ipqpi490aAxjK/P9nTidZaPTW6OtIODy1LzJSIGcr9TkyEgwK1Ag==
   dependencies:
     blake-hash "^1.1.0"
     blake2b "^2.1.3"
-    circom "0.5.21"
+    circom "0.5.33"
     ffjavascript "0.1.0"
+    web3-utils "^1.3.0"
 
-"circomlib@git+https://github.com/iden3/circomlib.git#01da5f90dbbefeed5d78cec3b87303244338b920":
+"circomlib@https://github.com/iden3/circomlib.git#01da5f90dbbefeed5d78cec3b87303244338b920":
   version "0.2.3"
-  resolved "git+https://github.com/iden3/circomlib.git#01da5f90dbbefeed5d78cec3b87303244338b920"
+  resolved "https://github.com/iden3/circomlib.git#01da5f90dbbefeed5d78cec3b87303244338b920"
   dependencies:
     blake-hash "^1.1.0"
     blake2b "^2.1.3"
@@ -1775,12 +1805,12 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cream-merkle-tree@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/cream-merkle-tree/-/cream-merkle-tree-0.0.8.tgz#e53996494d85fba087b75c11bdbcd6c509d8e0bc"
-  integrity sha512-SZaScQ8J6WSPJl+22zewVG7UuoU91TUToTdUpbrhIa8YvH0IRRCt5oUxPafABapbmPucKEoIWON4c4L8ugohvQ==
+cream-merkle-tree@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/cream-merkle-tree/-/cream-merkle-tree-0.0.9.tgz#f1a69efd3943aa52064e42b5b230efbc5af63df4"
+  integrity sha512-qO9Lggl3lYdDGR94SaPlrr5+2si1Y6AeQvpeSDDlXqR7sISbBZ6N68GMYWpQn2HqB3QA/q48DL/GEyh+iwC3qQ==
   dependencies:
-    circomlib "^0.2.4"
+    circomlib "^0.5.2"
     typescript "^3.9.9"
 
 create-ecdh@^4.0.0:
@@ -2536,6 +2566,11 @@ fastfile@0.0.12:
   resolved "https://registry.yarnpkg.com/fastfile/-/fastfile-0.0.12.tgz#302597fe2d0d19e1405851685a5ddce03e1dd6e8"
   integrity sha512-0EZo2y5eW8X0oiDDRvcnufjVxlM96CQL5hvmRQtbRABWlCkH73IHwkzl0qOSdxtchaMr+0TSB7GVqaVEixRr1Q==
 
+fastfile@0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/fastfile/-/fastfile-0.0.18.tgz#2b69bbbfd2fcccc9bc8099c27de1379b89756a4b"
+  integrity sha512-q03PTKc+wptis4WmuFOwPNQx2p5myFUrl/dMgRlW9mymc1Egyc14JPHgiGnWK+sJ0+dBl2Vwtfh5GfSQltYOpw==
+
 fastfile@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/fastfile/-/fastfile-0.0.7.tgz#07699d90c9bd4d6f4e24226b49029a4a72f4b739"
@@ -2571,6 +2606,15 @@ ffjavascript@0.2.10:
   dependencies:
     big-integer "^1.6.48"
     wasmcurves "0.0.5"
+    worker-threads "^1.0.0"
+
+ffjavascript@0.2.22:
+  version "0.2.22"
+  resolved "https://registry.yarnpkg.com/ffjavascript/-/ffjavascript-0.2.22.tgz#101f33db330b0f6a0c10dec22ebf5725618a8a7d"
+  integrity sha512-EsVqap2Txm17bKW0z/jXCX3M7rQ++nQUAJY8alWDpyhjRj90xjl6GLeVSKZQ8rOFDQ/SFFXcEB8w9X8Boxid+w==
+  dependencies:
+    big-integer "^1.6.48"
+    wasmcurves "0.0.12"
     worker-threads "^1.0.0"
 
 ffjavascript@0.2.4:
@@ -4963,6 +5007,15 @@ r1csfile@0.0.14:
     fastfile "0.0.7"
     ffjavascript "0.2.4"
 
+r1csfile@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/r1csfile/-/r1csfile-0.0.16.tgz#53c66a79b50eebc2d15a1048e39d548ce9da7ccd"
+  integrity sha512-A2jRVWzGgmXeG2lVAc0H4suJmzt50it5UvBnycJgBCpMXM3tH/M6RguP7nvs6suY/yYnkN6jX6iTScSiDUF3FA==
+  dependencies:
+    "@iden3/bigarray" "0.0.2"
+    fastfile "0.0.18"
+    ffjavascript "0.2.22"
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -6146,6 +6199,14 @@ wasmbuilder@0.0.10:
   integrity sha512-zQSvZ7d74d9OvN+mCN6ucNne4QS5/cBBYTHldX0Oe+u9gStY21orapvuX1ajisA7RVIpuFhYg+ZgdySsPfeh0A==
   dependencies:
     big-integer "^1.6.48"
+
+wasmcurves@0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/wasmcurves/-/wasmcurves-0.0.12.tgz#1496e2219ac07f9a420f527803ae13b1d7a89246"
+  integrity sha512-1Jl9mkatyHSNj80ILjf85SZUNuZQBCkTjJlhzqHnZQXUmIimCIWkugaVaYNjozLs1Gun4h/keZe1MBeBN0sRpg==
+  dependencies:
+    big-integer "^1.6.42"
+    blakejs "^1.1.0"
 
 wasmcurves@0.0.4:
   version "0.0.4"
