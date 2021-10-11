@@ -79,11 +79,15 @@ const generateMerkleProof = async (
 	deposit: Deposit,
 	address: string,
 	p: MerkleTreeParams,
+	token: string,
 	host: string = 'http://localhost:3000'
 ): Promise<MerkleProof> => {
 	const tree = new MerkleTree(p.depth, p.zero_value)
 
-	const r = await axios.get(host + '/zkcream/deposit/logs/' + address)
+	const authorization = token ? `Bearer ${token}` : ''
+	const r = await axios.get(host + '/zkcream/deposit/logs/' + address, {
+		headers: { authorization },
+	})
 	const events = r.data
 
 	const depositEvent = events.find((e) => e[0] === toHex(deposit.commitment))
