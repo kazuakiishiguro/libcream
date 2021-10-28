@@ -84,9 +84,9 @@ const generateMerkleProof = async (
 ): Promise<MerkleProof> => {
 	const tree = new MerkleTree(p.depth, p.zero_value)
 
-	const Authorization = `Bearer ${token}`
+	const Cookie = `jwt=${token}`
 	const r = await axios.get(host + '/zkcream/deposit/logs/' + address, {
-		headers: { Authorization },
+		headers: { Cookie },
 	})
 	const events = r.data
 
