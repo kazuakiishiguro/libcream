@@ -14,6 +14,7 @@ describe('maci utilities implementation', () => {
 		const coordinatorPubKey = new Keypair().pubKey
 		const recipientIndex = 1
 		const nonce = 1
+		const pollId = 1
 
 		const [message, encKeyPair] = createMessage(
 			userStateIndex,
@@ -22,6 +23,7 @@ describe('maci utilities implementation', () => {
 			coordinatorPubKey,
 			recipientIndex,
 			null,
+			pollId,
 			nonce
 		)
 
@@ -32,10 +34,11 @@ describe('maci utilities implementation', () => {
 			coordinatorPubKey,
 			recipientIndex,
 			null,
+			pollId,
 			nonce
 		)
 
-		expect(message.iv).not.toEqual(message1.iv)
+		expect(message.data).not.toEqual(message1.data)
 		expect(encKeyPair).not.toEqual(encKeyPair1)
 	})
 })

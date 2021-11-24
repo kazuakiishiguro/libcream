@@ -11,6 +11,7 @@ const createMessage = (
 	coordinatorPubKey: PubKey,
 	voteOptionIndex: number | null, // index of recipinets[]
 	voiceCredits: number | null,
+	pollId: number,
 	nonce: number,
 	_salt?: BigInt
 ): [Message, PubKey] => {
@@ -25,6 +26,7 @@ const createMessage = (
 		BigInt(voteOptionIndex || 0),
 		BigInt(quadraticVoteWeight),
 		BigInt(nonce),
+		BigInt(pollId),
 		BigInt(salt)
 	)
 	const signature = command.sign(userKeypair.privKey)
