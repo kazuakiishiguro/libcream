@@ -46,6 +46,7 @@
     "lint-staged": "^10.5.4",
     "maci-crypto": "^1.0.2",
     "maci-domainobjs": "^1.0.2",
-    "typescript": "^3.9.9"
+    "typescript": "^3.9.9",
+    "xmlhttprequest": "^1.8.0"
   }
 }
