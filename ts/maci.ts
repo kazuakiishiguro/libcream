@@ -18,16 +18,16 @@ const createMessage = (
 	const encKeypair = new Keypair()
 	const salt = _salt ? _salt : genRandomSalt()
 	const quadraticVoteWeight = voiceCredits
-		? bnSqrt(BigNumber.from(voiceCredits))
-		: 0
+		? bnSqrt(BigNumber.from(voiceCredits)).toBigInt()
+		: BigInt(0)
 	const command = new Command(
 		BigInt(userStateIndex),
 		newUserKeypair ? newUserKeypair.pubKey : userKeypair.pubKey,
 		BigInt(voteOptionIndex || 0),
-		BigInt(quadraticVoteWeight),
+		quadraticVoteWeight,
 		BigInt(nonce),
 		BigInt(pollId),
-		BigInt(salt)
+		salt
 	)
 	const signature = command.sign(userKeypair.privKey)
 	const message = command.encrypt(
