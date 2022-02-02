@@ -11,21 +11,23 @@ const createMessage = (
 	coordinatorPubKey: PubKey,
 	voteOptionIndex: number | null, // index of recipinets[]
 	voiceCredits: number | null,
+	pollId: number,
 	nonce: number,
 	_salt?: BigInt
 ): [Message, PubKey] => {
 	const encKeypair = new Keypair()
 	const salt = _salt ? _salt : genRandomSalt()
 	const quadraticVoteWeight = voiceCredits
-		? bnSqrt(BigNumber.from(voiceCredits))
-		: 0
+		? bnSqrt(BigNumber.from(voiceCredits)).toBigInt()
+		: BigInt(0)
 	const command = new Command(
 		BigInt(userStateIndex),
 		newUserKeypair ? newUserKeypair.pubKey : userKeypair.pubKey,
 		BigInt(voteOptionIndex || 0),
-		BigInt(quadraticVoteWeight),
+		quadraticVoteWeight,
 		BigInt(nonce),
-		BigInt(salt)
+		BigInt(pollId),
+		salt
 	)
 	const signature = command.sign(userKeypair.privKey)
 	const message = command.encrypt(
