@@ -125,4 +125,8 @@ export {
 	createMessage,
 	bnSqrt,
 	generateMerkleProof,
+	PedersenHash,
+	Deposit,
+	MerkleTreeParams,
+	MerkleProof,
 }
